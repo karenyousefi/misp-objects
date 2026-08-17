@@ -1,0 +1,66 @@
+{
+  "name": "threat-hunt-query",
+  "description": "A platform-native hunting query used to test a hypothesis. Use this object for SPL, KQL, EQL, and similar query languages. When the detection logic is portable, prefer the standard MISP sigma or yara object instead and link it to the hypothesis with a 'tests' Object Reference.",
+  "meta-category": "threat-hunting",
+  "uuid": "0fc943ec-c8fd-4311-b748-249bdef0f7d8",
+  "version": 1,
+  "attributes": {
+    "hypothesis-id": {
+      "description": "Local hypothesis-id this query tests, e.g. H1. Also link formally via an Object Reference of type 'tests' to the threat-hunt-hypothesis object.",
+      "misp-attribute": "text",
+      "disable_correlation": true,
+      "ui-priority": 1
+    },
+    "query-language": {
+      "description": "Language/dialect of the query.",
+      "misp-attribute": "text",
+      "disable_correlation": true,
+      "sane_default": [
+        "SPL",
+        "KQL",
+        "EQL",
+        "OSQuery SQL",
+        "YARA-L",
+        "STIX Pattern",
+        "Other"
+      ],
+      "ui-priority": 1
+    },
+    "query": {
+      "description": "The literal query or search.",
+      "misp-attribute": "text",
+      "disable_correlation": true,
+      "ui-priority": 1
+    },
+    "data-source": {
+      "description": "Index, sourcetype, or table the query runs against.",
+      "misp-attribute": "text",
+      "multiple": true,
+      "disable_correlation": true,
+      "ui-priority": 0
+    },
+    "platform": {
+      "description": "Platform the query is written for.",
+      "misp-attribute": "text",
+      "disable_correlation": true,
+      "sane_default": [
+        "Splunk",
+        "Microsoft Sentinel",
+        "Elastic",
+        "CrowdStrike",
+        "Chronicle",
+        "osquery"
+      ],
+      "ui-priority": 0
+    },
+    "comment": {
+      "description": "Notes on tuning, thresholds, or known exclusions.",
+      "misp-attribute": "comment",
+      "ui-priority": 0
+    }
+  },
+  "required": [
+    "query",
+    "query-language"
+  ]
+}
