@@ -296,7 +296,8 @@
         "iot",
         "health",
         "followthemoney",
-        "detection"
+        "detection",
+        "threat-hunting"
       ],
       "type": "string"
     },
